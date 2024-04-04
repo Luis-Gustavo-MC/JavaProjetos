@@ -10,11 +10,10 @@ public class Pedido {
 	private Double precoFinal;
 	
 //Constructors
-	public Pedido(String nomeCliente, ArrayList<Prato> prato, Double taxaServico, Double precoFinal) {
+	public Pedido(String nomeCliente, ArrayList<Prato> prato) {
 		this.nomeCliente = nomeCliente;
 		this.prato = prato;
-		this.taxaServico = taxaServico;
-		this.precoFinal = precoFinal;
+		this.taxaServico = 2.00;
 	}
 //Gets e Sets
 	public String getNomeCliente() {
@@ -47,6 +46,38 @@ public class Pedido {
 
 	public void setPrecoFinal(Double precoFinal) {
 		this.precoFinal = precoFinal;
+	}
+//Metodos
+	public void calcularPreco(ArrayList<Prato> preco) {
+		Double aux = 0.00;
+		
+		for(Prato x: preco) {
+			aux += x.getPrecoVenda();
+		}
+		
+		this.precoFinal = aux + this.taxaServico;
+	}
+	
+	public String calcularTroco(Double dinheiro) {
+		Double aux = 0.0;
+		if(dinheiro<this.precoFinal) {
+			return "erro";
+		}
+		aux = dinheiro - this.precoFinal;
+		return " Troco: " + aux;
+	}
+//Varrer arrayList
+	public String varrerArray(ArrayList<Prato>prato) {
+		String aux = "";
+		for(Prato x: prato) {
+			aux += "\n" + x.toString() + "";
+		}
+		return aux;
+		
+	}
+//Nota fiscal
+	public String notaFiscal(ArrayList<Prato>prato) {
+		return "\t\t\t\t"+" Nota Fiscal " + this.varrerArray(prato) +"\n"+"Taxa Serviço: " + this.taxaServico + "\nPreço Final: " + this.precoFinal;
 	}
 	
 	

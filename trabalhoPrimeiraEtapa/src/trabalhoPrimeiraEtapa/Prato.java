@@ -1,16 +1,17 @@
 package trabalhoPrimeiraEtapa;
 
-import java.util.Date;
-//Upperclasse
+import java.time.LocalDate;
+
+//Uppercasting
 public class Prato {
 //Atributos
 	
 	private Double precoVenda;
-	private Date dataValidade;
+	private LocalDate dataValidade;
 	private Double peso;
 	
 //Construtor
-	public Prato(Double precoVenda, Date dataValidade, Double peso) {
+	public Prato(Double precoVenda, LocalDate dataValidade, Double peso) {
 		this.precoVenda = precoVenda;
 		this.dataValidade = dataValidade;
 		this.peso = peso;
@@ -24,11 +25,11 @@ public class Prato {
 		return this.precoVenda;
 	}
 
-	public Date getDataValidade() {
+	public LocalDate getDataValidade() {
 		return dataValidade;
 	}
 
-	public void setDataValidade(Date dataValidade) {
+	public void setDataValidade(LocalDate dataValidade) {
 		this.dataValidade = dataValidade;
 	}
 
